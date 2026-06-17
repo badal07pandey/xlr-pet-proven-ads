@@ -7,7 +7,7 @@
     <meta name="description" content="Swipe 100+ Facebook ad ideas proven to work across $20M+ in pet brand ad spend. Get the free file now.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -17,82 +17,87 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #07070f;
-            color: #ffffff;
+            background: #ffffff;
+            color: #111111;
             min-height: 100vh;
-            padding: 52px 20px 72px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .container {
-            width: 100%;
-            max-width: 620px;
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 52px 32px 64px;
         }
 
-        .media-wrap {
-            margin-bottom: 36px;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .media-wrap img {
-            display: block;
-            width: 100%;
-            height: auto;
+        /* ── Headline section ── */
+        .headline-section {
+            text-align: center;
+            margin-bottom: 48px;
         }
 
         h1 {
-            font-size: clamp(1.45rem, 4vw, 2.15rem);
+            font-size: clamp(1.6rem, 3.2vw, 2.6rem);
             font-weight: 800;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
+            line-height: 1.25;
+            color: #111111;
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
         }
 
-        h1 em {
-            font-style: normal;
-            color: #FFC200;
+        .free-tag {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: #22c55e;
+            letter-spacing: -0.01em;
+        }
+
+        /* ── Two-column layout ── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* ── GIF column ── */
+        .gif-col img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* ── Form column ── */
+        .form-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .body-copy {
             font-size: 1.05rem;
-            line-height: 1.8;
-            color: #8888aa;
-            margin-bottom: 40px;
+            line-height: 1.75;
+            color: #111111;
+            font-style: italic;
+            margin-bottom: 28px;
         }
 
-        .card {
-            background: #0f0f1f;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
-            padding: 40px;
+        .body-copy p + p {
+            margin-top: 16px;
         }
 
+        /* Form */
         .field {
-            margin-bottom: 16px;
-        }
-
-        .field label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #5555aa;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .field input {
             display: block;
             width: 100%;
-            padding: 14px 18px;
-            background: #07070f;
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            border-radius: 10px;
-            color: #ffffff;
+            padding: 15px 18px;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            color: #111111;
             font-size: 1rem;
             font-family: inherit;
             transition: border-color 0.15s;
@@ -100,33 +105,36 @@
         }
 
         .field input::placeholder {
-            color: #2e2e50;
+            color: #999999;
         }
 
         .field input:focus {
             outline: none;
-            border-color: #FFC200;
+            border-color: #111111;
         }
 
         .submit-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
-            margin-top: 24px;
-            padding: 17px 24px;
-            background: #FFC200;
-            color: #07070f;
+            margin-top: 4px;
+            padding: 17px 22px;
+            background: #111111;
+            color: #ffffff;
             font-family: inherit;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
             border: none;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
-            letter-spacing: 0.01em;
             transition: background 0.15s, transform 0.1s, opacity 0.15s;
         }
 
         .submit-btn:hover:not(:disabled) {
-            background: #e6af00;
+            background: #333333;
         }
 
         .submit-btn:active:not(:disabled) {
@@ -138,25 +146,41 @@
             cursor: not-allowed;
         }
 
+        .btn-arrow {
+            width: 28px;
+            height: 28px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .btn-arrow svg {
+            width: 14px;
+            height: 14px;
+        }
+
         .trust {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            margin-top: 14px;
-            color: #44447a;
-            font-size: 0.82rem;
-            font-weight: 500;
+            gap: 5px;
+            margin-top: 12px;
+            color: #555555;
+            font-size: 0.85rem;
         }
 
+        /* Success */
         .success {
             display: none;
-            margin-top: 20px;
-            padding: 16px 20px;
-            background: rgba(63, 185, 80, 0.08);
-            border: 1px solid rgba(63, 185, 80, 0.25);
-            border-radius: 10px;
-            color: #3fb950;
+            margin-top: 16px;
+            padding: 14px 18px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 6px;
+            color: #16a34a;
             font-weight: 600;
             font-size: 0.95rem;
             text-align: center;
@@ -164,91 +188,117 @@
 
         .error-msg {
             display: none;
-            margin-top: 12px;
-            color: #f85149;
+            margin-top: 10px;
+            color: #dc2626;
             font-size: 0.85rem;
             text-align: center;
         }
 
+        /* Disclaimer */
         .disclaimer {
             margin-top: 28px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 0.78rem;
-            line-height: 1.7;
-            color: #3a3a60;
+            line-height: 1.65;
+            color: #555555;
+            font-style: italic;
         }
 
         .disclaimer a {
-            color: #FFC200;
-            text-decoration: none;
-        }
-
-        .disclaimer a:hover {
+            color: #111111;
             text-decoration: underline;
         }
 
-        @media (max-width: 500px) {
-            .card {
-                padding: 28px 20px;
+        /* ── Mobile ── */
+        @media (max-width: 720px) {
+            .page {
+                padding: 36px 20px 52px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .free-tag {
+                font-size: 1.7rem;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .submit-btn {
+                font-size: 0.82rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="page">
 
-        <div class="media-wrap">
-            <img
-                src="https://ik.imagekit.io/99nufhsfv/Recording2025-08-10at08.54.25-ezgif.com-resize.gif?updatedAt=1754798978853"
-                alt="100+ Proven Facebook Ad Ideas for Pet Brands"
-                loading="eager"
-            >
+        <!-- Headline -->
+        <div class="headline-section">
+            <h1>After Spending Over $20M+ on Facebook Ads in past 4 years For Pet Product Brands, I'm Revealing My 100+ Facebook Ads ideas proven to work</h1>
+            <p class="free-tag">FREE Swipe File</p>
         </div>
 
-        <h1>After Spending Over <em>$20M+</em> on Facebook Ads in the Past 4 Years For Pet Product Brands, I'm Revealing My <em>100+ Facebook Ad Ideas Proven to Work</em> — Free Swipe File</h1>
+        <!-- Two column -->
+        <div class="two-col">
 
-        <p class="body-copy">
-            Enter your name &amp; email to swipe my exact 100+ Facebook Ads ideas that I used to spend over $20M+ in Facebook Ads over 4 years for pet product brands — so you can immediately copy, model &amp; deploy the exact winning structures in your ad account and scale profitably.
-        </p>
-
-        <div class="card">
-            <form id="leadForm" novalidate>
-                <div class="field">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
-                </div>
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your business email" required autocomplete="email">
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    Yes! I want to win with Facebook Ads
-                </button>
-
-                <div class="trust">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L4 6v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V6l-8-4z" fill="#3fb950"/>
-                    </svg>
-                    Your Info Is Safe &amp; Secure.
-                </div>
-
-                <div class="success" id="successMsg">
-                    You're in! Check your inbox for the swipe file.
-                </div>
-                <div class="error-msg" id="errorMsg">
-                    Something went wrong. Please try again or email us directly.
-                </div>
-            </form>
-
-            <div class="disclaimer">
-                Please use your business email to sign up. Generic emails (e.g., Gmail, Yahoo) are not accepted as they often lead to spam and bot signups.
-                <br><br>
-                If you only have a personal email, contact us at <a href="mailto:[email protected]">[email protected]</a> to receive the 100+ proven ad ideas.
+            <!-- GIF -->
+            <div class="gif-col">
+                <img
+                    src="/assets/recording.gif"
+                    alt="100+ Proven Facebook Ad Ideas for Pet Brands"
+                    loading="eager"
+                >
             </div>
-        </div>
 
+            <!-- Form -->
+            <div class="form-col">
+                <div class="body-copy">
+                    <p>Enter Your Name &amp; E-mail address to swipe my exact 100+ Facebook ads Ideas. That I use to spend over $20M+ in Facebook ads in past 4 years For Pet product brands.</p>
+                    <p>So that you can immediately copy, model &amp; deploy the exact winning structure in your Ad-Account &amp; scale it profitably.</p>
+                </div>
+
+                <form id="leadForm" novalidate>
+                    <div class="field">
+                        <input type="text" id="name" name="name" placeholder="Name" required autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email">
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span>Yes! I Want to Win With Facebook Ads</span>
+                        <span class="btn-arrow">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8h10M9 4l4 4-4 4" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div class="trust">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="#555555"><path d="M18 8h-1V6c0-2.8-2.2-5-5-5S7 3.2 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.7 1.4-3.1 3.1-3.1 1.7 0 3.1 1.4 3.1 3.1v2z"/></svg>
+                        Your Info Is Safe &amp; Secure.
+                    </div>
+
+                    <div class="success" id="successMsg">
+                        You're in! Check your inbox for the swipe file.
+                    </div>
+                    <div class="error-msg" id="errorMsg">
+                        Something went wrong. Please try again or email us directly.
+                    </div>
+                </form>
+
+                <div class="disclaimer">
+                    "Please use your business email to sign up. Generic emails (e.g., Gmail, Yahoo) are not accepted as they often lead to spam and bot signups."
+                    <br><br>
+                    If you only have a personal email, please contact us directly at <a href="mailto:[email protected]">[email protected]</a> to receive 100+ proven ad ideas.
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
@@ -267,7 +317,7 @@
             if (!name || !email) return;
 
             btn.disabled = true;
-            btn.textContent = 'Sending…';
+            btn.querySelector('span').textContent = 'Sending…';
 
             try {
                 const res = await fetch('/api/subscribe', {
@@ -288,7 +338,7 @@
             } catch {
                 errorMsg.style.display = 'block';
                 btn.disabled = false;
-                btn.textContent = 'Yes! I want to win with Facebook Ads';
+                btn.querySelector('span').textContent = 'Yes! I Want to Win With Facebook Ads';
             }
         });
     </script>
