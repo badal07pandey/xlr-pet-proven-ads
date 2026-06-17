@@ -329,9 +329,7 @@
                 const data = await res.json();
 
                 if (res.ok && data.success) {
-                    form.querySelectorAll('input').forEach(i => i.disabled = true);
-                    btn.style.display = 'none';
-                    successMsg.style.display = 'block';
+                    window.location.href = 'https://xlr-media.com/free-course-thank-you/';
                 } else {
                     throw new Error(data.error || 'failed');
                 }
