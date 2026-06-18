@@ -400,6 +400,26 @@
 
             if (!name || !email || !revenue) return;
 
+            const blockedDomains = [
+                'gmail.com','googlemail.com',
+                'yahoo.com','yahoo.co.uk','yahoo.in','yahoo.co.in','yahoo.com.au','ymail.com',
+                'hotmail.com','hotmail.co.uk','hotmail.fr',
+                'outlook.com','outlook.in','outlook.co.uk',
+                'live.com','live.co.uk','live.in',
+                'aol.com','aim.com',
+                'icloud.com','me.com','mac.com',
+                'protonmail.com','proton.me',
+                'mail.com','gmx.com','gmx.net',
+                'msn.com','inbox.com',
+                'rediffmail.com','zoho.com',
+            ];
+            const emailDomain = email.split('@')[1]?.toLowerCase();
+            if (!emailDomain || blockedDomains.includes(emailDomain)) {
+                errorMsg.textContent = 'Please use your business email address. Generic emails (Gmail, Yahoo, Outlook, etc.) are not accepted.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+
             btn.disabled = true;
             btn.querySelector('span').textContent = 'Sending…';
 
