@@ -53,6 +53,20 @@
         .disclaimer { margin-top: 28px; font-size: 0.78rem; line-height: 1.65; color: #555555; font-style: italic; }
         .disclaimer a { color: #111111; text-decoration: underline; }
         @media (max-width: 720px) { .page { padding: 36px 20px 52px; } h1 { font-size: 1.5rem; } .free-tag { font-size: 1.7rem; } .two-col { grid-template-columns: 1fr; gap: 32px; } .submit-btn { font-size: 0.82rem; } }
+    
+        .phone-field {
+            display: flex;
+            gap: 8px;
+        }
+        .phone-field select {
+            width: auto;
+            min-width: 158px;
+            flex-shrink: 0;
+        }
+        .phone-field input {
+            flex: 1;
+            min-width: 0;
+        }
     </style>
 </head>
 <body>
@@ -73,14 +87,24 @@
                 <form id="leadForm" novalidate>
                     <div class="field"><input type="text" id="name" name="name" placeholder="Name" required autocomplete="name"></div>
                     <div class="field"><input type="email" id="email" name="email" placeholder="Email" required autocomplete="email"></div>
-                    <div class="field"><input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel"></div>
+                    <div class="field phone-field">
+                        <select id="phoneCode" name="phoneCode">
+                            <option value="+1" selected>US (+1)</option>
+                            <option value="+1">Canada (+1)</option>
+                            <option value="+61">Australia (+61)</option>
+                            <option value="+64">New Zealand (+64)</option>
+                            <option value="+44">UK (+44)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel">
+                    </div>
                     <div class="field">
                         <select id="revenue" name="revenue" required>
-                            <option value="" disabled selected>Monthly Revenue</option>
-                            <option value="$0–$10k">$0 – $10k</option>
-                            <option value="$10k–$50k">$10k – $50k</option>
-                            <option value="$50k–$500k">$50k – $500k</option>
-                            <option value="$500k+">$500k+</option>
+                            <option value="" disabled selected>Monthly Ad Spend</option>
+                            <option value="$0-$5K/month">$0 – $5K / month</option>
+                            <option value="$5K-$20K/month">$5K – $20K / month</option>
+                            <option value="$20K-$50K/month">$20K – $50K / month</option>
+                            <option value="$50K-$500K/month">$50K – $500K / month</option>
+                            <option value="$500K+/month">$500K+ / month</option>
                         </select>
                     </div>
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -110,7 +134,9 @@
             errorMsg.style.display = 'none';
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const phoneCode = document.getElementById('phoneCode').value;
+                const phoneNumber = document.getElementById('phone').value.trim();
+                const phone = phoneNumber ? phoneCode + ' ' + phoneNumber : '';
             const revenue = document.getElementById('revenue').value;
             if (!name || !email || !revenue) return;
             btn.disabled = true;
