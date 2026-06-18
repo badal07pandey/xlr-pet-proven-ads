@@ -22,7 +22,7 @@ module.exports = async function handler(req, res) {
             first_name: name || '',
             fields: {
                 phone: phone || '',
-                monthly_revenue: revenue || '',
+                ad_spend: revenue || '',
             },
         }),
     });
@@ -39,7 +39,21 @@ module.exports = async function handler(req, res) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                text: `New lead — *${name || 'Unknown'}*\nEmail: ${email}\nPhone: ${phone || '—'}\nMonthly Revenue: ${revenue || '—'}\nSource: ${niche || 'Unknown'}`,
+                text: `New lead from *${niche || 'Proven Ads'}*`,
+                attachments: [
+                    {
+                        color: '#22c55e',
+                        title: 'Proven Ads — XLR Media',
+                        text: 'A new form submission has been received',
+                        fields: [
+                            { title: 'Name', value: name || '—', short: false },
+                            { title: 'Email', value: email, short: false },
+                            { title: 'Niche', value: niche || '—', short: true },
+                            { title: 'Ad Spend Level', value: revenue || '—', short: true },
+                            { title: 'Phone', value: phone || '—', short: false },
+                        ],
+                    },
+                ],
             }),
         }).catch(err => console.error('Slack error:', err));
     }
