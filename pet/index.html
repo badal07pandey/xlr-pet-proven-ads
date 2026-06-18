@@ -340,6 +340,7 @@
                     <div class="field">
                         <select id="revenue" name="revenue" required>
                             <option value="" disabled selected>Monthly Ad Spend</option>
+                            <option value="not-spending">Not spending yet ($0)</option>
                             <option value="$0-$5K/month">$0 – $5K / month</option>
                             <option value="$5K-$20K/month">$5K – $20K / month</option>
                             <option value="$20K-$50K/month">$20K – $50K / month</option>
@@ -413,7 +414,11 @@
 
                 if (res.ok && data.success) {
                     fbq('track', 'Lead');
-                    window.location.href = 'https://xlr-media.com/free-course-thank-you/';
+                    const qualitySpend = ['$5K-$20K/month','$20K-$50K/month','$50K-$500K/month','$500K+/month'];
+                    const redirectUrl = qualitySpend.includes(revenue)
+                        ? 'https://xlr-media.com/free-course-thank-you-10/'
+                        : 'https://xlr-media.com/free-course-thank-you/';
+                    window.location.href = redirectUrl;
                 } else {
                     throw new Error(data.error || 'failed');
                 }
