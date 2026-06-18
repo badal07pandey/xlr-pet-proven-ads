@@ -3,17 +3,16 @@ module.exports = async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { name, email, phone, revenue } = req.body || {};
+    const { name, email, phone, revenue, formId, niche } = req.body || {};
 
     if (!email) {
         return res.status(400).json({ error: 'Email is required' });
     }
 
     const API_KEY = process.env.CONVERTKIT_API_KEY;
-    const FORM_ID = process.env.CONVERTKIT_FORM_ID;
+    const FORM_ID = formId || process.env.CONVERTKIT_FORM_ID;
     const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK_URL;
 
-    // Subscribe to ConvertKit with custom fields
     const ckRes = await fetch(`https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -35,13 +34,12 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: ckData.message || 'Subscription failed' });
     }
 
-    // Slack notification
     if (SLACK_WEBHOOK) {
         fetch(SLACK_WEBHOOK, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                text: `New lead — *${name || 'Unknown'}*\nEmail: ${email}\nPhone: ${phone || '—'}\nMonthly Revenue: ${revenue || '—'}\nSource: Pet Proven Ads`,
+                text: `New lead — *${name || 'Unknown'}*\nEmail: ${email}\nPhone: ${phone || '—'}\nMonthly Revenue: ${revenue || '—'}\nSource: ${niche || 'Unknown'}`,
             }),
         }).catch(err => console.error('Slack error:', err));
     }
